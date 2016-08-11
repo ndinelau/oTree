@@ -11,7 +11,7 @@ from .models import Constants
 class Choice(Page):
 
     form_model = models.Player
-    form_fields = ['use_toilet', 'small_cleaning']
+    form_fields = ['use_toilet', 'small_cleaning', 'big_clean']
 
 
 class ChoiceWaitPage(WaitPage):

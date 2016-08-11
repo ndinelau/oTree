@@ -39,7 +39,7 @@ class Player(BasePlayer):
     health = models.PositiveIntegerField(min=0, max=12, default=12)
     resources = models.PositiveIntegerField(min=0, default=9)
 
-    use_toilet = models.BooleanField()
-    small_cleaning = models.BooleanField()
+    use_toilet = models.BooleanField(widget=widgets.RadioSelectHorizontal())
+    small_cleaning = models.BooleanField(widget=widgets.RadioSelectHorizontal())
 
-    big_clean = models.BooleanField()
+    big_clean = models.BooleanField(widget=widgets.RadioSelectHorizontal())
