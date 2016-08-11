@@ -128,11 +128,11 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'matching_pennies',
-        'display_name': "Matching Pennies",
-        'num_demo_participants': 2,
+        'name': 'toilet',
+        'display_name': "Toilet",
+        'num_demo_participants': 4,
         'app_sequence': [
-            'matching_pennies', 'payment_info'
+            'toilet',
         ],
     }
 ]
