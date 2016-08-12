@@ -57,7 +57,7 @@ class Result(Page):
 
 
 page_sequence = [
-    Instructions1, Instructions2, Instructions3, Instructions4,
+    #~ Instructions1, Instructions2, Instructions3, Instructions4,
     InitGroup, Choice,
 
 ]
