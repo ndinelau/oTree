@@ -53,7 +53,15 @@ class Group(BaseGroup):
     treatment = models.CharField(choices=Constants.treatments)
 
     def init_group(self):
-        import ipdb; ipdb.set_trace()
+        if self.round_number == 1:
+            self.toilet_clean = 4
+        else:
+            self.toilet_clean = self.in_round(1).toilet_clean
+        for p in self.get_players():
+            p.init_player()
+
+    def set_payoff(self):
+        pass
 
 
 class Player(BasePlayer):
@@ -67,6 +75,8 @@ class Player(BasePlayer):
     big_clean = models.BooleanField(widget=widgets.RadioSelectHorizontal())
 
     def init_player(self):
-        import ipdb; ipdb.set_trace()
-        if self.health < 12:
-            self.health += 1
+        if self.round_number == 1:
+            self.health = 12
+            self.resources = 9
+        else:
+            import ipdb; ipdb.set_trace()

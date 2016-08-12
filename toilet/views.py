@@ -30,7 +30,7 @@ class Instructions4(Page):
 
 class InitGroup(WaitPage):
     def after_all_players_arrive(self):
-        import ipdb; ipdb.set_trace()
+        self.group.init_group()
 
 
 class Choice(Page):
@@ -40,16 +40,7 @@ class Choice(Page):
 
 class ChoiceWaitPage(WaitPage):
     def after_all_players_arrive(self):
-        pass
-
-
-class BigClean(Page):
-    pass
-
-
-class BigCleanWaitPage(WaitPage):
-    def after_all_players_arrive(self):
-        pass
+        self.group.set_payoff()
 
 
 class Result(Page):
@@ -58,6 +49,6 @@ class Result(Page):
 
 page_sequence = [
     #~ Instructions1, Instructions2, Instructions3, Instructions4,
-    InitGroup, Choice,
+    InitGroup, Choice, ChoiceWaitPage,
 
 ]
