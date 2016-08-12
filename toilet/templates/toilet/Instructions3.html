@@ -1,0 +1,35 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Instructions 3/4
+{% endblock %}
+
+{% block content %}
+<div class="row">
+   <h3 class="text-info">Health</h3>
+   <ul class="lead">
+        <li>Min.: 0 = close to death till Max.:12 = completely healthy
+            Start:12 (every round +1 if &lt;12).</li>
+        <li>Reduces by 1 when toilet is not used.</li>
+        <li>Reduces when using a dirty toilet:<br>
+            state of toilet 0 till 4  health –2;   state of toilet 4 till 8  health –1</li>
+   </ul>
+</div>
+<div class="row">
+   <h3 class="text-info">Resources</h3>
+   <ul class="lead">
+        <li>Start: 9, Min: 0, Max: OpenEnd.</li>
+        <li>You gain every round resources, but less when health is low:
+            Health 0 till 4  Resources +0; Health 4 till 8  R +1 ; Health 8 till 12  R +2</li>
+        <li>Small cleaning: Reduces resources by 1</li>
+        <li>Big cleaning: Uses lots of resources (next).</li>
+   </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+{% endblock %}
