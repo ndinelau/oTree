@@ -8,23 +8,24 @@
 {% block content %}
 <div class="row">
     <div class="pull-right" style="text-align:right">
-    {% include "toilet/includes/lifebar.html" %}
+        <p class="text-center"><strong>Status</strong></p>
+        {% include "toilet/includes/lifebar.html" %}
     </div>
 </div>
 
-<div class="row">
+<div class="row lead">
     <div class="col-md-12">
     {% formfield player.use_toilet with label="Do you want to use the toilet?" %}
     </div>
 </div>
 
-<div class="row well" id="smallCleanRow" style="display:none;">
+<div class="row well lead" id="smallCleanRow" style="display:none;">
     <div class="col-md-11 col-md-offset-1">
     {% formfield player.small_cleaning with label="Do you want to make an small clean?" %}
     </div>
 </div>
 <hr/>
-<div class="row">
+<div class="row lead">
     <div class="col-md-12">
     {% formfield player.big_clean with label="Do you want to take part on the big clean" %}
     </div>

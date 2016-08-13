@@ -37,18 +37,21 @@ class Choice(Page):
     form_model = models.Player
     form_fields = ['use_toilet', 'small_cleaning', 'big_clean']
 
+    def is_displayed(self):
+        return self.player.health > 0
+
 
 class ChoiceWaitPage(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoff()
 
 
-class Result(Page):
+class Results(Page):
     pass
 
 
 page_sequence = [
     #~ Instructions1, Instructions2, Instructions3, Instructions4,
-    InitGroup, Choice, ChoiceWaitPage,
+    InitGroup, Choice, ChoiceWaitPage, Results
 
 ]
