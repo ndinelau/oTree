@@ -49,7 +49,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
 
-    toilet_clean = models.PositiveIntegerField(min=0, max=12, default=4)
+    toilet = models.FloatField(min=0, max=12, default=4)
     treatment = models.CharField(choices=Constants.treatments)
 
     def init_group(self):
@@ -61,7 +61,42 @@ class Group(BaseGroup):
             p.init_player()
 
     def set_payoff(self):
-        pass
+        players = self.get_players()
+
+        # retrieve the dirt and health lose of alive players
+        # also select the part of big clean
+        health_lose, toilet_dirt = 0., 0.
+        part_of_big_clean = []
+        for player in players:
+            if player.health:
+                if player.use_toilet and player.small_cleaning and player.resources:
+                    toilet_dirt += 0.5
+                elif player.use_toilet:
+                    toilet_dirt += 1
+                else:
+                    healt_lose += 1
+                if player.big_clean:
+                    big_clean.append(player)
+
+        # set the new status of toilet
+        self.toilet -= toilet_dirt
+        if self.toilet < 0:
+            self.toilet  = 0
+
+        # set the healt loses
+        for player in players:
+            if player.health:
+                player.health -= healt_lose
+                if player.health < 0:
+                    player.health = 0
+
+        # big clean
+        #~ for player in big_clean:
+
+
+
+
+
 
 
 class Player(BasePlayer):
