@@ -73,7 +73,7 @@ class Group(BaseGroup):
             else:
                 player_prev_round = player.in_round(self.round_number - 1)
                 player.health = player_prev_round.health
-                self.resources = (
+                player.resources = (
                     player_prev_round.resources +
                     self.get_resources_inc(player))
 
