@@ -116,18 +116,17 @@ class Group(BaseGroup):
 
         # big clean
         if part_of_big_clean:
-            contribution, resources = int(12/len(part_of_big_clean)), 0
+            contribution, resources = int(12/len(part_of_big_clean)), 0.
             for player in part_of_big_clean:
                 if player.resources >= contribution:
-                    player.resources -= contribution
                     resources += contribution
-                    if player.resources < 0:
-                        player.resources = 0
-            # this is the formula on the document
-            clean_perc = resources / 12.
-            clean_points = self.toilet * clean_perc
-            self.toilet += clean_points
+                    player.resources -= contribution
+                else:
+                    resources += plyer.resources
+                    player.resources = 0
 
+            clean_prop =  resources / 12.
+            self.toilet += (12. - self.toilet) * clean_prop
         if self.toilet < 0:
             self.toilet = 0
         elif self.toilet > 12:

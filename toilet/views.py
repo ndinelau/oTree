@@ -8,12 +8,12 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class Instructions1(Page):
+class Instructions(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
 
-class Instructions2(Page):
+class Agreement(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
@@ -51,7 +51,7 @@ class Results(Page):
 
 
 page_sequence = [
-    #~ Instructions1, Instructions2, Instructions3, Instructions4,
+    Instructions, Agreement,
     InitGroup, Choice, ChoiceWaitPage, Results
 
 ]
