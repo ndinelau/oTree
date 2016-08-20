@@ -80,7 +80,7 @@ class Group(BaseGroup):
     def get_health_lose(self, player):
         if player.use_toilet and self.toilet <= 4:
             return 2
-        elif player.use_toilet:
+        elif player.use_toilet and self.toilet <= 8:
             return 1
         return 0
 
@@ -95,9 +95,9 @@ class Group(BaseGroup):
             if player.health:
                 if player.use_toilet and player.small_cleaning and player.resources:
                     toilet_dirt += 0.5
-                elif player.use_toilet:
+                elif playx:
                     toilet_dirt += 1
-                else:
+                elif player.use_toilet:
                     group_health_lose += 1
                 if player.big_clean:
                     part_of_big_clean.append(player)

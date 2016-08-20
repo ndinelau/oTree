@@ -18,16 +18,6 @@ class Agreement(Page):
         return self.subsession.round_number == 1
 
 
-class Instructions3(Page):
-    def is_displayed(self):
-        return self.subsession.round_number == 1
-
-
-class Instructions4(Page):
-    def is_displayed(self):
-        return self.subsession.round_number == 1
-
-
 class InitGroup(WaitPage):
     def after_all_players_arrive(self):
         self.group.init_group()
@@ -51,7 +41,7 @@ class Results(Page):
 
 
 page_sequence = [
-    Instructions, Agreement,
+    #~ Instructions, Agreement,
     InitGroup, Choice, ChoiceWaitPage, Results
 
 ]
