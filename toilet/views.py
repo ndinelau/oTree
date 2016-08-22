@@ -41,7 +41,7 @@ class Results(Page):
 
 
 page_sequence = [
-    #~ Instructions, Agreement,
+    Instructions, Agreement,
     InitGroup, Choice, ChoiceWaitPage, Results
 
 ]

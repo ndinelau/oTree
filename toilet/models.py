@@ -77,42 +77,37 @@ class Group(BaseGroup):
                     player_prev_round.resources +
                     self.get_resources_inc(player))
 
-    def get_health_lose(self, player):
-        if player.use_toilet and self.toilet <= 4:
+    def usage_health_lose(self):
+        if self.toilet <= 4:
             return 2
-        elif player.use_toilet and self.toilet <= 8:
+        elif self.toilet <= 8:
             return 1
         return 0
 
     def set_payoff(self):
         players = self.get_players()
-
-        # retrieve the dirt and health lose of alive players
-        # also select the players part of big clean
-        group_health_lose, toilet_dirt = 0., 0.
-        part_of_big_clean = []
+        toilet_dirt, part_of_big_clean = 0., []
         for player in players:
-            if player.health:
-                if player.use_toilet and player.small_cleaning and player.resources:
+            if not player.health:
+                continue # if player is death don't play
+            elif player.use_toilet:
+                player.health -= self.usage_health_lose()
+                if player.small_cleaning and player.resources:
                     toilet_dirt += 0.5
-                elif playx:
+                    player.resources -= 1
+                else:
                     toilet_dirt += 1
-                elif player.use_toilet:
-                    group_health_lose += 1
-                if player.big_clean:
-                    part_of_big_clean.append(player)
+            else:
+                player.health -= 1
+            if player.health < 0:
+                player.health = 0
+            if player.big_clean:
+                part_of_big_clean.append(player)
 
         # set the new status of toilet
         self.toilet -= toilet_dirt
         if self.toilet < 0:
             self.toilet  = 0
-
-        # set the healt loses
-        for player in players:
-            if player.health:
-                player.health -= (self.get_health_lose(player) + group_health_lose)
-                if player.health < 0:
-                    player.health = 0
 
         # big clean
         if part_of_big_clean:
@@ -124,7 +119,6 @@ class Group(BaseGroup):
                 else:
                     resources += plyer.resources
                     player.resources = 0
-
             clean_prop =  resources / 12.
             self.toilet += (12. - self.toilet) * clean_prop
         if self.toilet < 0:
