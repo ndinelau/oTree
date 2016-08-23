@@ -9,9 +9,8 @@
 
 <div class="row">
     <p class="well lead">
-        <strong>Toilet Status:
-        <span class="text-info">{{group.toilet}}</span>
-        </strong>
+        <strong class="text-info">Toilet Status <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>:</strong>
+        <strong>{{group.toilet}}/{{Constants.max_toilet}}</strong>
     </p>
 
 
@@ -27,7 +26,7 @@
             {% for ply in group.get_players %}
             <tr {% if player == ply %}class="text-info"{% endif %}>
                 <th>Player {{ply.id_in_group}}</th>
-                <td>{{ply.health}}</td>
+                <td>{{ply.health}}/{{Constants.max_health}}</td>
                 <td>{{ply.resources}}</td>
                 <td>{% if player == ply %}YOU{% endif %}</td>
             </tr>

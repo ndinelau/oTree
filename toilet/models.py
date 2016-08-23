@@ -28,6 +28,8 @@ class Constants(BaseConstants):
     treatment_not_affective = "not affective"
     treatments = (treatment_affective, treatment_not_affective)
 
+    max_toilet = 12.
+    max_health = 12
 
 
 class Subsession(BaseSubsession):
@@ -49,7 +51,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
 
-    toilet = models.FloatField(min=0, max=12, default=4)
+    toilet = models.FloatField(min=0, max=Constants.max_toilet, default=4)
     treatment = models.CharField(choices=Constants.treatments)
 
     def get_resources_inc(self, player):
@@ -77,7 +79,7 @@ class Group(BaseGroup):
                     player_prev_round.resources +
                     self.get_resources_inc(player))
 
-    def usage_health_lose(self):
+    def current_toilet_usage_health_lose(self):
         if self.toilet <= 4:
             return 2
         elif self.toilet <= 8:
@@ -87,22 +89,29 @@ class Group(BaseGroup):
     def set_payoff(self):
         players = self.get_players()
         toilet_dirt, part_of_big_clean = 0., []
+        dont_use_the_toilet = sum(1 for player in players if not player.use_toilet)
+        toilet_usage_health_lose = self.current_toilet_usage_health_lose()
+
         for player in players:
             if not player.health:
                 continue # if player is death don't play
-            elif player.use_toilet:
-                player.health -= self.usage_health_lose()
+
+            player.health -= dont_use_the_toilet
+
+            if player.use_toilet:
+                player.health -= toilet_usage_health_lose
                 if player.small_cleaning and player.resources:
                     toilet_dirt += 0.5
                     player.resources -= 1
                 else:
                     toilet_dirt += 1
-            else:
-                player.health -= 1
+
             if player.health < 0:
                 player.health = 0
+
             if player.big_clean:
                 part_of_big_clean.append(player)
+
 
         # set the new status of toilet
         self.toilet -= toilet_dirt
@@ -134,7 +143,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    health = models.PositiveIntegerField(min=0, max=12)
+    health = models.PositiveIntegerField(min=0, max=Constants.max_health)
     resources = models.PositiveIntegerField(min=0)
 
     use_toilet = models.BooleanField(widget=widgets.RadioSelectHorizontal())
