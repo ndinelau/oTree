@@ -151,19 +151,3 @@ class Player(BasePlayer):
 
     big_clean = models.BooleanField(widget=widgets.RadioSelectHorizontal())
 
-
-# =============================================================================
-# CHAT
-# =============================================================================
-
-class Room(models.Model):
-
-    group = models.ForeignKey(Group)
-
-
-class Message(models.Model):
-
-    room = models.ForeignKey(Room)
-    player = models.ForeignKey(Player)
-    message = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)

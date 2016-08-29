@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <textarea id="chat"></textarea>
+        <input type="text" id="message">
+    </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+
+    {% next_button %}
+{% endblock %}
+
+

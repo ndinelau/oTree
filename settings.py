@@ -134,6 +134,14 @@ SESSION_CONFIGS = [
         'app_sequence': [
             'toilet',
         ],
+    },
+    {
+        'name': 'chat',
+        'display_name': "Chat",
+        'num_demo_participants': 4,
+        'app_sequence': [
+            'chat',
+        ],
     }
 ]
 
