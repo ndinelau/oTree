@@ -74,10 +74,10 @@ class Group(BaseGroup):
                 player.resources = 9
             else:
                 player_prev_round = player.in_round(self.round_number - 1)
-                player.health = player_prev_round.health
                 player.resources = (
                     player_prev_round.resources +
                     self.get_resources_inc(player))
+                player.health = player_prev_round.health + 1
 
     def current_toilet_usage_health_lose(self):
         if self.toilet <= 4:
