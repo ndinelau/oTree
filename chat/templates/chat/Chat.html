@@ -6,11 +6,37 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+        #chat{
+            height: 300px;
+        }
+
+        #message, #chat, #send {
+            width: 100%;
+            max-width: 100%;
+        }
+
+    </style>
+
+
     <div class="row">
-        <textarea id="chat"></textarea>
-        <input type="text" id="message">
+        <div class="col-md-12">
+            <div  id="chat" class="form-control"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <input type="text" placeholder="Your Message" id="message" class="form-control input-medium search-query">
+        </div>
+        <div class="col-md-1">
+            <button id="send" class="btn btn-info btn-mini">
+                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+            </button>
+        </div>
     </div>
 
+
+<hr>
 <div class="row">
     <div class="col-md-12">
         <span class="pull-right">{% next_button %}</span>
@@ -18,7 +44,7 @@
 </div>
 
 
-    {% next_button %}
+
 {% endblock %}
 
 
