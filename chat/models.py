@@ -41,14 +41,16 @@ class Player(BasePlayer):
 # CHAT
 # =============================================================================
 
-class Room(models.Model):
-
-    group = models.ForeignKey(Group)
-
-
 class Message(models.Model):
 
-    room = models.ForeignKey(Room)
+    group = models.ForeignKey(Group)
     player = models.ForeignKey(Player)
     message = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    COLORS = {1: "#4F6FAB", 2: "#60AB4F", 3: "#FCC767", 4: "#FF7979"}
+
+    @property
+    def color(self):
+        return Message.COLORS[self.player.id_in_group]
+

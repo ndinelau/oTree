@@ -2,20 +2,20 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Chat
+    Chat - Player {{player.id_in_group}}
 {% endblock %}
 
 {% block content %}
     <style>
         #chat{
             height: 300px;
+            overflow-y: auto;
         }
 
         #message, #chat, #send {
             width: 100%;
             max-width: 100%;
         }
-
     </style>
 
 
@@ -29,7 +29,7 @@
             <input type="text" placeholder="Your Message" id="message" class="form-control input-medium search-query">
         </div>
         <div class="col-md-1">
-            <button id="send" class="btn btn-info btn-mini">
+            <button id="send" class="btn btn-info btn-mini" disabled>
                 <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
             </button>
         </div>
@@ -47,4 +47,48 @@
 
 {% endblock %}
 
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+        var $divChat = $("div#chat");
+        var $inputMessage = $("input#message");
+        var $buttonSend = $("button#send");
+
+        $inputMessage.keyup(function(){
+            var isEmpty = !$inputMessage.val();
+            if(isEmpty){
+                $buttonSend.prop("disabled", true);
+            } else {
+                $buttonSend.prop("disabled", false);
+            }
+        });
+
+        $buttonSend.click(function(){
+            var url = "{% url 'ajax_chat:send_message' %}";
+            var tokken = '{{ csrf_token }}';
+            var player = {{ player.id }};
+            var message = $inputMessage.val();
+            var msgData = {player: player, message: message, csrfmiddlewaretoken: tokken};
+            $.post(url, msgData, function(data){
+                $inputMessage.val("");
+                $buttonSend.prop("disabled", true);
+            });
+            return false;
+        });
+
+        setInterval(
+            function(){
+                var url = "{% url 'ajax_chat:retrieve_messages' %}";
+                var player = {{ player.id }};
+                var rtrvData = {player: player};
+                $.get(url, rtrvData, function(data){
+                    $divChat.html(data.messagesHTML);
+                    $divChat[0].scrollTop = $divChat[0].scrollHeight;
+                });
+            }, 1000);
+
+
+    });
+</script>
+{% endblock %}
 
