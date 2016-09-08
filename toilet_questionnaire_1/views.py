@@ -12,22 +12,22 @@ class Questionnaire1(Page):
 
     form_model = models.Player
     form_fields = [
-        'q_first_game_judge_satisfied', "q_first_game_judge_surprised", "q_first_game_judge_upset",
+        'q1_first_game_judge_satisfied', "q1_first_game_judge_surprised", "q1_first_game_judge_upset",
 
-        'q_players_helping_each_other',
-        'q_team_spirit_or_cohesion',
-        'q_important_presented_image_of_and_to_yourself',
-        'q_important_maximum_and_fair_resources_to_everyone',
-        'q_important_other_members_trust_in_you',
-        'q_important_not_you_maximum_and_fair_resources_to_everyone',
-        'q_trust_do_you_have_into_other_members',
-        'q_how_much_do_you_like_the_other_team_members',
-        'q_how_good_do_you_understand_solving',
-        'q_how_good_do_the_other_group_members_understand_solving',
+        'q1_players_helping_each_other',
+        'q1_team_spirit_or_cohesion',
+        'q1_important_presented_image_of_and_to_yourself',
+        'q1_important_maximum_and_fair_resources_to_everyone',
+        'q1_important_other_members_trust_in_you',
+        'q1_important_not_you_maximum_and_fair_resources_to_everyone',
+        'q1_trust_do_you_have_into_other_members',
+        'q1_how_much_do_you_like_the_other_team_members',
+        'q1_how_good_do_you_understand_solving',
+        'q1_how_good_do_the_other_group_members_understand_solving',
 
-        'q_how_to_improve_the_groups_behavior_to_maximize_resources',
-        'q_which_strategy_would_you_follow_and_why',
-        'q_if_communicate_what_would_you_say_and_why']
+        'q1_how_to_improve_the_groups_behavior_to_maximize_resources',
+        'q1_which_strategy_would_you_follow_and_why',
+        'q1_if_communicate_what_would_you_say_and_why']
 
 
 

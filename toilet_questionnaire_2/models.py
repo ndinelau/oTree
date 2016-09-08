@@ -34,4 +34,47 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+
+    q2_communication_surprised = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_communication_satisfied = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_communication_upset = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_how_did_you_talk_about_the_cleaning = models.CharField(
+        max_length=255,  widget=widgets.RadioSelect(),
+        choices=["The group created strict rules when to clean.",
+                 "More or less rules when to clean.",
+                 "Several cleaning possibilities were mentioned without staying with one.",
+                 "Without cleaning possibilites given by the group members, I found myself easier doing it next time better.",
+                 "Cleaning behaviors were mentioned without helping me judge how to improve next time.",
+                 "The issure 'Toilet cleaning' or behavior in game wasn't mentioned at all."])
+
+    q2_recomendation_for_actions = models.TextField()
+    q2_communication_helped_positive_and_negative = models.TextField()
+
+    q2_opinion_recomendation_everyone = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_opinion_recomendation_fair = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_opinion_recomendation_max_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_opinion_recomendation_understandable = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_pressure_behaving_like_settled_rules = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_would_it_disturb_you_behaving_differently = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_is_there_any_kind_of_social_pressure = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_i_will_follwow_the_recommendation_entirely = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_i_will_follwow_the_recommendation_maximizing_my_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_others_follow_the_recommendations_entirely = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_others_follow_the_recommendations_try_to_maximizing_their_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_how_much_cooperate_because_communication = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_team_spirit = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_importance_of_your_image = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_importance_maximum_resources_to_everyone = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_importance_other_members_trust_in_you = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_importance_maximum_resources_to_everyone_not_you = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_how_much_trust_do_you_have_into_other_members = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_how_much_do_you_like_the_other_team_members = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_how_good_you_understand_solving_problem_great_maximum_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_after_communication_how_good_others_understand_solving_problem_great_maximum_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_which_strategy_would_you_follow_and_why = models.TextField()

@@ -144,13 +144,19 @@ SESSION_CONFIGS = [
         ],
     },
     {
-        'name': 'questionaires',
-        'display_name': "Questionnaire 1", #"All 3 questionnaires",
+        'name': 'questionnaire_1',
+        'display_name': "Questionnaire 1",
         'num_demo_participants': 1,
         'app_sequence': [
             'toilet_questionnaire_1',
-            #~ 'toilet_questionnaire_2',
-            #~ 'toilet_questionnaire_3'
+        ],
+    },
+    {
+        'name': 'questionnaire_2',
+        'display_name': "Questionnaire 2",
+        'num_demo_participants': 1,
+        'app_sequence': [
+            'toilet_questionnaire_2',
         ],
     }
 ]

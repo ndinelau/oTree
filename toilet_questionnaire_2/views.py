@@ -8,22 +8,39 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
-    pass
+class Questionnaire2(Page):
 
+    form_model = models.Player
+    form_fields = [
+        'q2_communication_surprised', 'q2_communication_satisfied', 'q2_communication_upset',
+        'q2_how_did_you_talk_about_the_cleaning',
 
-class ResultsWaitPage(WaitPage):
+        'q2_recomendation_for_actions', 'q2_communication_helped_positive_and_negative',
+        'q2_opinion_recomendation_everyone', 'q2_opinion_recomendation_fair', 'q2_opinion_recomendation_max_resources', 'q2_opinion_recomendation_understandable',
 
-    def after_all_players_arrive(self):
-        pass
+        'q2_pressure_behaving_like_settled_rules',
+        'q2_would_it_disturb_you_behaving_differently',
+        'q2_is_there_any_kind_of_social_pressure',
 
+        'q2_i_will_follwow_the_recommendation_entirely', 'q2_i_will_follwow_the_recommendation_maximizing_my_advantage',
+        'q2_others_follow_the_recommendations_entirely', 'q2_others_follow_the_recommendations_try_to_maximizing_their_advantage',
 
-class Results(Page):
-    pass
+        'q2_how_much_cooperate_because_communication',
+        'q2_team_spirit',
+
+        'q2_after_communication_importance_of_your_image',
+        'q2_after_communication_importance_maximum_resources_to_everyone',
+        'q2_after_communication_importance_other_members_trust_in_you',
+        'q2_after_communication_importance_maximum_resources_to_everyone_not_you',
+        'q2_after_communication_how_much_trust_do_you_have_into_other_members',
+        'q2_after_communication_how_much_do_you_like_the_other_team_members',
+        'q2_after_communication_how_good_you_understand_solving_problem_great_maximum_resources',
+        'q2_after_communication_how_good_others_understand_solving_problem_great_maximum_resources',
+
+        'q2_which_strategy_would_you_follow_and_why'
+    ]
 
 
 page_sequence = [
-    MyPage,
-    ResultsWaitPage,
-    Results
+    Questionnaire2
 ]
