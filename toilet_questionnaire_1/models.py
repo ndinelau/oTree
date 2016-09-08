@@ -26,11 +26,6 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
-    agree_level = (
-        _("I agree"), _("I agree a bit"), _("Neutral"),
-        _("I disagree a bit"), _("I totally disagree")
-    )
-
 
 class Subsession(BaseSubsession):
     pass
@@ -42,20 +37,20 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    q_first_game_judge_surprised = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_first_game_judge_satisfied = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_first_game_judge_upset = models.CharField(max_length=50, choices=Constants.agree_level)
+    q_first_game_judge_surprised = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_first_game_judge_satisfied = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_first_game_judge_upset = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
 
-    q_players_helping_each_other = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_team_spirit_or_cohesion = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_important_presented_image_of_and_to_yourself = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_important_maximum_and_fair_resources_to_everyone = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_important_other_members_trust_in_you = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_important_not_you_maximum_and_fair_resources_to_everyone = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_trust_do_you_have_into_other_members = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_how_much_do_you_like_the_other_team_members = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_how_good_do_you_understand_solving = models.CharField(max_length=50, choices=Constants.agree_level)
-    q_how_good_do_the_other_group_members_understand_solving = models.CharField(max_length=50, choices=Constants.agree_level)
+    q_players_helping_each_other = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_team_spirit_or_cohesion = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_important_presented_image_of_and_to_yourself = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_important_maximum_and_fair_resources_to_everyone = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_important_other_members_trust_in_you = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_important_not_you_maximum_and_fair_resources_to_everyone = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_trust_do_you_have_into_other_members = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_how_much_do_you_like_the_other_team_members = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_how_good_do_you_understand_solving = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q_how_good_do_the_other_group_members_understand_solving = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
 
     q_how_to_improve_the_groups_behavior_to_maximize_resources = models.TextField()
     q_which_strategy_would_you_follow_and_why = models.TextField()
