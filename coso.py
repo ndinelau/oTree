@@ -4,14 +4,14 @@
 a="""
 how much cooperate because communication
 team spirit
-after communication importance of your image
-after communication importance maximum resources to everyone
-after communication importance other members trust in you
-after communication importance maximum resources to everyone not you
-after communication How much trust do you have into other members
-after communication how much do you like the other team members
-after communication How good you understand solving problem great maximum resources
-after communication How good others understand solving problem great maximum resources
+afterc importance of your image
+afterc importance maximum resources to everyone
+afterc importance other members trust in you
+afterc importance maximum resources to everyone not you
+afterc How much trust do you have into other members
+afterc how much do you like the other team members
+afterc How good you understand solving problem max resources
+afterc others understand solving problem great max resources
 which strategy would you follow and why
 """.strip()
 
@@ -23,4 +23,6 @@ for l in lines:
     print "q2_{} = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))".format(l)
 
 print ""
-import pprint;pprint.pprint(["q2_"+"_".join(l.lower().split()) for l in lines])
+lista = ["q2_"+"_".join(l.lower().split()) for l in lines]
+import pprint;pprint.pprint(lista)
+print map(len, lista)

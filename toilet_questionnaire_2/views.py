@@ -28,14 +28,14 @@ class Questionnaire2(Page):
         'q2_how_much_cooperate_because_communication',
         'q2_team_spirit',
 
-        'q2_after_communication_importance_of_your_image',
-        'q2_after_communication_importance_maximum_resources_to_everyone',
-        'q2_after_communication_importance_other_members_trust_in_you',
-        'q2_after_communication_importance_maximum_resources_to_everyone_not_you',
-        'q2_after_communication_how_much_trust_do_you_have_into_other_members',
-        'q2_after_communication_how_much_do_you_like_the_other_team_members',
-        'q2_after_communication_how_good_you_understand_solving_problem_great_maximum_resources',
-        'q2_after_communication_how_good_others_understand_solving_problem_great_maximum_resources',
+        'q2_afterc_importance_of_your_image',
+        'q2_afterc_importance_maximum_resources_to_everyone',
+        'q2_afterc_importance_other_members_trust_in_you',
+        'q2_afterc_importance_maximum_resources_to_everyone_not_you',
+        'q2_afterc_how_much_trust_do_you_have_into_other_members',
+        'q2_afterc_how_much_do_you_like_the_other_team_members',
+        'q2_afterc_how_good_you_understand_solving_problem_max_resources',
+        'q2_afterc_others_understand_solving_problem_great_max_resources',
 
         'q2_which_strategy_would_you_follow_and_why'
     ]
