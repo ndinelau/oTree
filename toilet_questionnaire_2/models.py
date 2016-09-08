@@ -65,7 +65,7 @@ class Player(BasePlayer):
     q2_i_will_follwow_the_recommendation_maximizing_my_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
 
     q2_others_follow_the_recommendations_entirely = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_others_follow_the_recommendations_try_to_maximizing_their_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_others_follow_the_recommendations_try_to_max_their_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
 
     q2_how_much_cooperate_because_communication = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q2_team_spirit = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))

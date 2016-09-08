@@ -23,7 +23,7 @@ class Questionnaire2(Page):
         'q2_is_there_any_kind_of_social_pressure',
 
         'q2_i_will_follwow_the_recommendation_entirely', 'q2_i_will_follwow_the_recommendation_maximizing_my_advantage',
-        'q2_others_follow_the_recommendations_entirely', 'q2_others_follow_the_recommendations_try_to_maximizing_their_advantage',
+        'q2_others_follow_the_recommendations_entirely', 'q2_others_follow_the_recommendations_try_to_max_their_advantage',
 
         'q2_how_much_cooperate_because_communication',
         'q2_team_spirit',
