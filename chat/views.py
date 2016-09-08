@@ -19,6 +19,12 @@ MESSAGES_TPL = loader.get_template("chat/messages.html")
 # PAGES
 # =============================================================================
 
+class SmallTalk(Page):
+
+    def is_displayed(self):
+        return self.player.group.treatment  == Constants.treatment_small_talk
+
+
 class ChatWaitPage(WaitPage):
     pass
 
@@ -27,6 +33,7 @@ class Chat(Page):
     pass
 
 page_sequence = [
+    SmallTalk,
     ChatWaitPage,
     Chat,
 ]

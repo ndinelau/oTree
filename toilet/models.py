@@ -24,35 +24,16 @@ class Constants(BaseConstants):
     players_per_group = 4
     num_rounds = 12
 
-    treatment_affective = "affective"
-    treatment_not_affective = "not affective"
-    treatments = (treatment_affective, treatment_not_affective)
-
     max_toilet = 12.
     max_health = 12
 
 
 class Subsession(BaseSubsession):
-
-     def before_session_starts(self):
-        groups = self.get_groups()
-        if self.round_number == 1:
-            groups_n = len(groups)
-            not_affective = int(groups_n / 2)
-            for idx, g in enumerate(groups):
-                if idx < not_affective:
-                    g.treatment = Constants.treatment_not_affective
-                else:
-                    g.treatment = Constants.treatment_affective
-        else:
-            for g in groups:
-                g.treatment = g.in_round(1).treatment
-
+    pass
 
 class Group(BaseGroup):
 
     toilet = models.FloatField(min=0, max=Constants.max_toilet, default=4)
-    treatment = models.CharField(choices=Constants.treatments)
 
     def get_resources_inc(self, player):
         if player.health <= 4:

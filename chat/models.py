@@ -2,6 +2,7 @@
 # <standard imports>
 from __future__ import division
 
+import itertools
 import random
 
 import otree.models
@@ -24,13 +25,22 @@ class Constants(BaseConstants):
     players_per_group = 4
     num_rounds = 1
 
+    treatment_small_talk = "small_talk"
+    treatment_normal_talk = "normal_talk"
+    treatments = (treatment_small_talk, treatment_normal_talk)
+
 
 class Subsession(BaseSubsession):
-    pass
+
+    def before_session_starts(self):
+        treatments = itertools.cycle(Constants.treatments)
+        for group in self.get_groups():
+            group.treatment = next(treatments)
 
 
 class Group(BaseGroup):
-    pass
+
+    treatment = models.CharField(choices=Constants.treatments)
 
 
 class Player(BasePlayer):
