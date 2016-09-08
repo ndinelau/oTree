@@ -77,5 +77,5 @@ class Player(BasePlayer):
     q2_afterc_how_much_do_you_like_the_other_team_members = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q2_afterc_how_good_you_understand_solving_problem_max_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q2_afterc_others_understand_solving_problem_great_max_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_which_strategy_would_you_follow_and_why = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_which_strategy_would_you_follow_and_why = models.TextField()
 
