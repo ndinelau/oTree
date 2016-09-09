@@ -158,6 +158,14 @@ SESSION_CONFIGS = [
         'app_sequence': [
             'toilet_questionnaire_2',
         ],
+    },
+    {
+        'name': 'questionnaire_3',
+        'display_name': "Questionnaire 3",
+        'num_demo_participants': 1,
+        'app_sequence': [
+            'toilet_questionnaire_3',
+        ],
     }
 ]
 
