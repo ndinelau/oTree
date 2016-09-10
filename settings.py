@@ -128,11 +128,21 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'fullgame',
+        'display_name': "Full Game",
+        'num_demo_participants': 4,
+        'app_sequence': [
+            'intro', 'toilet', 'toilet_questionnaire_1',
+            'chat', 'toilet_questionnaire_2',
+            'toilet2', 'toilet_questionnaire_3'
+        ],
+    },
+    {
         'name': 'toilet',
         'display_name': "Toilet",
         'num_demo_participants': 4,
         'app_sequence': [
-            'toilet',
+            'intro', 'toilet',
         ],
     },
     {
