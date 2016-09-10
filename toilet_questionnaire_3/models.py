@@ -58,7 +58,7 @@ class Player(BasePlayer):
     q3_birthday = models.DateField()
 
     q3_main_subject_in_university = models.TextField()
-    q3_already_take_part_in_a_problem_solving = models.TextField()
+    q3_already_take_part_in_a_problem_solving = models.BooleanField(widget=widgets.RadioSelectHorizontal())
 
     q3_experiment_itself_was_interessting = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q3_were_you_personally_engaged_achieving_good_results = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))

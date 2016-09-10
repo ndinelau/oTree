@@ -25,13 +25,21 @@
     }
 
     ul.questions .indent {
-        margin-left: 30px;
+        margin-left: 40px;
     }
 
     ul.questions textarea {
         width: 100%;
         max-width: 100%;
         resize: none;
+    }
+
+    ul.questions div.small-tarea textarea {
+        height: 50px;
+    }
+
+    ul.questions li.question ul {
+        list-style-type: none;
     }
 </style>
 <div class="row">
@@ -46,7 +54,90 @@
                 <li>{% trans "Not at all" %} {{form.q3_second_game_upset}}  {% trans "Entirely upset" %}</li>
             </ul>
         </li>
+        <li class="question">
+            <div class="strong">{% trans "How much did the players help each other in the second game?" %}</div>
+            <div class="strong">{% trans "Group members work ..." %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_help_each_other_in_the_second_game}} {% trans "Full cooperation" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Is there any 'team spirit' or 'cohesion'?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_team_spirit}} {% trans "Enterely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "How important where the recommendations of actions to maximize everyones resources?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_recommendations_of_actions_to_maximize_everyones_resources}} {% trans "Very Helpfull" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Did you follow the recommendations of action?" %}</div>
+            <div class="strong">{% trans "The recommendations of actions were..." %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_i_follow_recommendations_of_action_followed}} {% trans "Entirely followed" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_i_follow_recommendations_of_action_my_advantage}} {% trans "Followed to try to maximizing my advantage" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Did other members follow the recommendations of action?" %}</div>
+            <div class="strong">{% trans "Some or all followed..." %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_others_follow_recommendations_of_action_followed}} {% trans "Entirely" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_others_follow_recommendations_of_action_their_advantage}} {% trans "Followed to try to maximizing they advantage" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Your opinions: If everyone followed the recommendations entirely, would everyone maximize his own resources?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_yopinion_if_they_followed_would_everyone_max_his_resources}} {% trans "Entirely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Explain in a fe sentences: What was the second game like? What was different and is it (if) because of the communication? Communicated before, what worked and what didn't work at all? Did you follow the 'rules' and why not? Etc." %}</div>
+            <div class="indent">{{form.q3_second_game_different_and_is_it_because_of_the_communication}}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Experienced from the second game and the communication: What would be the best strategy to optimize everyones resources?" %}</div>
+            <div class="indent">{{form.q3_the_best_strategy_to_optimize_everyones_resources}}</div>
+        </li>
     </ul>
+
+    <h4>{% trans "Details regarding your Person" %}</h4>
+    <ul class="questions">
+        <li class="question">
+            <div class="strong">{% trans "Gender" %}</div>
+            <div class="indent">{{form.q3_gender}}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Birthday" %}</div>
+            <div class="indent">{{form.q3_birthday}}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Main subject in university:" %}</div>
+            <div class="indent small-tarea">{{form.q3_main_subject_in_university}}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Did you already take part in a problem solving or kooperational game or experiment?" %}</div>
+            <div class="indent">{{form.q3_already_take_part_in_a_problem_solving}}</div>
+        </li>
+    </ul>
+
+    <h4>{% trans "Evaluation" %}</h4>
+    <ul class="questions">
+        <li class="question">
+            <div class="strong">{% trans "The experiment itself was interessting?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_experiment_itself_was_interessting}} {% trans "Very interested" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Were you personally engaged achieving good results?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_were_you_personally_engaged_achieving_good_results}} {% trans "Enterely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Was it dificult understanding and solving the problem?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_dificult_understanding_and_solving_the_problem}} {% trans "Very Dificult" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Was it obvious what to do?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q3_was_it_obvious_what_to_do}} {% trans "Enterely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Please write a short feedback: What was good, what were you upset about and what are possible things to improve/change?" %}</div>
+            <div class="indent">{{form.q3_short_feedback}}</div>
+        </li>
+
+    </ul>
+
     </div>
 </div>
 
