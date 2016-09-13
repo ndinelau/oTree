@@ -119,7 +119,7 @@ class Group(BaseGroup):
         # in the last round set the resources as payoff
         if self.round_number == Constants.num_rounds:
             for player in players:
-                player.payoff += player.resources
+                player.payoff = player.resources
 
 
 class Player(BasePlayer):
