@@ -57,7 +57,7 @@ class Group(BaseGroup):
                 player_prev_round = player.in_round(self.round_number - 1)
                 player.resources = (
                     player_prev_round.resources +
-                    self.get_resources_inc(player))
+                    self.get_resources_inc(player_prev_round))
                 player.health = player_prev_round.health + 1
 
     def current_toilet_usage_health_lose(self):

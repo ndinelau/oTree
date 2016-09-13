@@ -142,7 +142,7 @@ SESSION_CONFIGS = [
         'display_name': "Toilet",
         'num_demo_participants': 4,
         'app_sequence': [
-            'intro', 'toilet',
+            'toilet',
         ],
     },
     {
