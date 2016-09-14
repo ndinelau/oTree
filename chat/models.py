@@ -16,7 +16,7 @@ from otree.models import BaseSubsession, BaseGroup, BasePlayer
 author = 'Your name here'
 
 doc = """
-Your app description
+
 """
 
 
