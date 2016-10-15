@@ -128,9 +128,32 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'fullgame',
-        'display_name': "Full Game",
+        'name': 'fullgame5',
+        'display_name': "Full Game (Groups of 5)",
+        'num_demo_participants': 5,
+        'players_per_group': 5,
+        'app_sequence': [
+            'intro', 'toilet', 'toilet_questionnaire_1',
+            'chat', 'toilet_questionnaire_2',
+            'toilet2', 'toilet_questionnaire_3'
+        ],
+    },
+    {
+        'name': 'fullgame4',
+        'display_name': "Full Game (Groups of 4)",
         'num_demo_participants': 4,
+        'players_per_group': 4,
+        'app_sequence': [
+            'intro', 'toilet', 'toilet_questionnaire_1',
+            'chat', 'toilet_questionnaire_2',
+            'toilet2', 'toilet_questionnaire_3'
+        ],
+    },
+    {
+        'name': 'fullgame3',
+        'display_name': "Full Game (Groups of 3)",
+        'num_demo_participants': 3,
+        'players_per_group': 3,
         'app_sequence': [
             'intro', 'toilet', 'toilet_questionnaire_1',
             'chat', 'toilet_questionnaire_2',
@@ -147,8 +170,9 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'chat',
-        'display_name': "Chat",
-        'num_demo_participants': 4,
+        'display_name': "Chat (Group of 3)",
+        'num_demo_participants': 3,
+        'players_per_group': 3,
         'app_sequence': [
             'chat',
         ],
