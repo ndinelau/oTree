@@ -162,8 +162,9 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'toilet',
-        'display_name': "Toilet",
-        'num_demo_participants': 4,
+        'display_name': "Toilet (Group of 5)",
+        'num_demo_participants': 5,
+        'players_per_group': 5,
         'app_sequence': [
             'toilet',
         ],
