@@ -128,7 +128,7 @@ class Group(BaseGroup):
                     resources += contribution
                     player.resources -= contribution
                 else:
-                    resources += plyer.resources
+                    resources += player.resources
                     player.resources = 0
             clean_prop =  resources / 12.
             self.toilet += (12. - self.toilet) * clean_prop
