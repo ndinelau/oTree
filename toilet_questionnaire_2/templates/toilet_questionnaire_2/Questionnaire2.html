@@ -52,20 +52,20 @@
         </li>
         <li class="question">
             <div class="strong">{% trans "Recommendations for action through communication:" %}</div>
-            <div class="strong">{% trans "How did you talk about the cleaning? (Please chose one)" %}</div>
+            <div class="strong">{% trans "How did you talk about the cleaning? (Please choose one)" %}</div>
             <div class="no-strong">{{form.q2_how_did_you_talk_about_the_cleaning}}</div>
         </li>
     </ul>
 
-    <p>{% trans "Following questions relate to reccomendations for action, which resulted through communication. For instance coordination, agreements, rules (first upper two, presented above), but also vage recommendations (mid upper options). In case you could not use anything from the communication (last two options) you can skip sensless open questions in writing '-'." %}</p>
+    <p>{% trans "Following questions relate to recomendations for action, which resulted through communication. For instance coordination, agreements, rules (first upper two, presented above), but also vage recommendations (mid upper options). In case you could not use anything from the communication (last two options) you can skip sensless open questions with writing '-'." %}</p>
     <p>{% trans "Furthermore the concept 'taking advantage of others' will be used, meaning: Breaking rules on purpose to maximize your own goals." %}</p>
     <ul class="questions">
         <li class="question">
-            <div class="strong">{% trans "Please discribe any kind of recommendations for action. What do you and others have to do to follow them and what are the rules in case of breaking them?" %}</div>
+            <div class="strong">{% trans "Please describe any kind of recommendations for action. What do you and others have to do, to follow them and what are the rules in case of breaking them?" %}</div>
             <div class="indent">{{form.q2_recomendation_for_actions}}</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "Aside this recommendations for action, what else did the communication help you in positive and negative aspects?" %}</div>
+            <div class="strong">{% trans "Aside the recommendations for action, what else did the communication help you with? Positive or negative aspects." %}</div>
             <div class="indent">{{form.q2_communication_helped_positive_and_negative}}</div>
         </li>
         <li class="question">
@@ -75,7 +75,7 @@
                 <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_everyone}} {% trans "Given by everyone" %}</li>
                 <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_fair}}  {% trans "Entirely fair" %}</li>
                 <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_max_resources}}  {% trans "Very helpful maximizing everyone's resources" %}</li>
-                <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_understandable}}  {% trans "Entirely understandable about everyone's the behavior" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_understandable}}  {% trans "Entirely understandable about everyone's behavior" %}</li>
             </ul>
         </li>
         <li class="question">
