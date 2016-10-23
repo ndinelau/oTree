@@ -70,7 +70,7 @@ def send_message(request):
     group = player.group
 
     message = models.Message.objects.create(
-    group=group, player=player, message=message_txt)
+        group=group, player=player, message=message_txt)
 
     response = JsonResponse({'message': message.id})
     return response
