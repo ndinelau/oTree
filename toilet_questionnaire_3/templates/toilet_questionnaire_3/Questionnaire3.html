@@ -5,8 +5,35 @@
     {% trans "Questionnaire 3" %}
 {% endblock %}
 
-{% block content %}
+
+{% block scripts %}
+<script src="{% static 'global/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js' %}"></script>
+<script>
+    //~ $(document).ready(function(){
+        $("#id_q3_birthday").attr("placeholder", "YYYY-MM-DD");
+        $("#id_q3_birthday").prop("readonly", true);
+
+        $("#id_q3_birthday").datepicker({format: "yyyy-mm-dd", autoclose: true});
+
+
+        $("#id_q3_birthday").parent().find("span.btn").click(function(){
+            $("#id_q3_birthday").datepicker("show")
+        });
+
+
+
+    //~ });
+</script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'global/bootstrap-datepicker-master/css/bootstrap-datepicker3.min.css' %}">
 <style>
+    #id_q3_birthday {
+        background-color: #ffffff;
+
+    }
+
     ul.questions input.form-control {
         display: inline;
         margin: 3px;
@@ -42,6 +69,9 @@
         list-style-type: none;
     }
 </style>
+{% endblock %}
+
+{% block content %}
 <div class="row">
     <div class="col-md-12">
     <ul class="questions">
@@ -101,7 +131,12 @@
         </li>
         <li class="question">
             <div class="strong">{% trans "Birthday" %}</div>
-            <div class="indent">{{form.q3_birthday}}</div>
+            <div class="indent input-group">
+                {{form.q3_birthday}}
+                <span class="btn input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
         </li>
         <li class="question">
             <div class="strong">{% trans "Main subject in university:" %}</div>
