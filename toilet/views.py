@@ -16,7 +16,7 @@ class InitGroup(WaitPage):
 class Choice(Page):
     form_model = models.Player
     form_fields = ['use_toilet', 'small_cleaning', 'big_clean']
-    #~ timeout_seconds = 20
+    timeout_seconds = 20
     timeout_submission = {'use_toilet': True,
                           'small_cleaning': False,
                           'big_clean': False}
