@@ -96,7 +96,7 @@ class Group(BaseGroup):
 
         for player in players:
             if not player.health:
-                continue # if player is death don't play
+                continue # if player is dead don't play
 
             player.health -= dont_use_the_toilet
 
@@ -110,6 +110,8 @@ class Group(BaseGroup):
 
             if player.health < 0:
                 player.health = 0
+            elif player.health > Constants.max_health:
+                player.health = Constants.max_health
 
             if player.big_clean:
                 part_of_big_clean.append(player)

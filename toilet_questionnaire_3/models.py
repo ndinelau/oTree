@@ -55,8 +55,6 @@ class Player(BasePlayer):
     q3_the_best_strategy_to_optimize_everyones_resources = models.TextField()
 
     q3_gender = models.CharField(choices=["Male", "Female"], widget=widgets.RadioSelectHorizontal())
-    #~ import ipdb; ipdb.set_trace()
-
     q3_birthday = models.DateField(widget=widgets.Input())
 
     q3_main_subject_in_university = models.TextField()
