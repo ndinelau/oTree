@@ -166,7 +166,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'players_per_group': 4,
         'app_sequence': [
-            'toilet',
+            'toilet2',
         ],
     },
     {
