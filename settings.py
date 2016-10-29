@@ -209,6 +209,8 @@ if DEBUG:
 
 ROOT_URLCONF = 'urls'
 
+SENTRY_DSN = environ.get('OTREE_SENTRY')
+
 # anything you put after the below line will override
 # oTree's default settings. Use with caution.
 otree.settings.augment_settings(globals())
