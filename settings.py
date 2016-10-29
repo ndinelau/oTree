@@ -160,49 +160,52 @@ SESSION_CONFIGS = [
             'toilet2', 'toilet_questionnaire_3'
         ],
     },
-    {
-        'name': 'toilet',
-        'display_name': "Toilet (Group of 4)",
-        'num_demo_participants': 4,
-        'players_per_group': 4,
-        'app_sequence': [
-            'toilet2',
-        ],
-    },
-    {
-        'name': 'chat',
-        'display_name': "Chat (Group of 3)",
-        'num_demo_participants': 3,
-        'players_per_group': 3,
-        'app_sequence': [
-            'chat',
-        ],
-    },
-    {
-        'name': 'questionnaire_1',
-        'display_name': "Questionnaire 1",
-        'num_demo_participants': 1,
-        'app_sequence': [
-            'toilet_questionnaire_1',
-        ],
-    },
-    {
-        'name': 'questionnaire_2',
-        'display_name': "Questionnaire 2",
-        'num_demo_participants': 1,
-        'app_sequence': [
-            'toilet_questionnaire_2',
-        ],
-    },
-    {
-        'name': 'questionnaire_3',
-        'display_name': "Questionnaire 3",
-        'num_demo_participants': 1,
-        'app_sequence': [
-            'toilet_questionnaire_3',
-        ],
-    }
 ]
+
+if DEBUG:
+    SESSION_CONFIGS.extend([{
+            'name': 'toilet',
+            'display_name': "Toilet (Group of 4)",
+            'num_demo_participants': 4,
+            'players_per_group': 4,
+            'app_sequence': [
+                'toilet2',
+            ],
+        },
+        {
+            'name': 'chat',
+            'display_name': "Chat (Group of 3)",
+            'num_demo_participants': 3,
+            'players_per_group': 3,
+            'app_sequence': [
+                'chat',
+            ],
+        },
+        {
+            'name': 'questionnaire_1',
+            'display_name': "Questionnaire 1",
+            'num_demo_participants': 1,
+            'app_sequence': [
+                'toilet_questionnaire_1',
+            ],
+        },
+        {
+            'name': 'questionnaire_2',
+            'display_name': "Questionnaire 2",
+            'num_demo_participants': 1,
+            'app_sequence': [
+                'toilet_questionnaire_2',
+            ],
+        },
+        {
+            'name': 'questionnaire_3',
+            'display_name': "Questionnaire 3",
+            'num_demo_participants': 1,
+            'app_sequence': [
+                'toilet_questionnaire_3',
+            ],
+        }
+    ])
 
 ROOT_URLCONF = 'urls'
 
