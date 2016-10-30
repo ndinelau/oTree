@@ -27,7 +27,7 @@ class Choice(Page):
 
 
     def is_displayed(self):
-        return self.player.health > 0
+        return bool(self.player.health and self.player.health > 0)
 
 
 class ChoiceWaitPage(WaitPage):
