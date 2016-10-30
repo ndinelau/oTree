@@ -17,6 +17,8 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+import dateutil.parser
+
 
 MESSAGES_TPL = loader.get_template("chat/messages.html")
 
@@ -39,7 +41,7 @@ class Chat(Page):
     pass
 
 page_sequence = [
-    SmallTalk,
+    #~ SmallTalk,
     ChatWaitPage,
     Chat,
 ]
@@ -51,26 +53,36 @@ page_sequence = [
 @require_GET
 def retrieve_messages(request):
     MESSAGES_TPL = loader.get_template("chat/messages.html")
-    player_id = int(request.GET["player"])
+    group_id = int(request.GET["group"])
+    last_message = request.GET["last_message"] or None
 
-    player = models.Player.objects.get(id=player_id)
-    group = player.group
+    messages = models.Message.objects.filter(group__id=group_id)
 
-    messages = models.Message.objects.filter(group=group).order_by("timestamp")
-    message_html = MESSAGES_TPL.render({"messages": messages});
-    return JsonResponse({"messagesHTML": message_html})
+    if last_message:
+        last_message = dateutil.parser.parse(last_message)
+        messages = messages.filter(timestamp__gt=last_message)
 
+    messages = list(messages.order_by("timestamp")[:10].select_related())
+
+    if messages:
+        message_html = MESSAGES_TPL.render({"messages": messages})
+        last_message = messages[-1].timestamp.isoformat()
+        response = {
+            "hasMessages": True,
+            "messagesHTML": message_html,
+            "lastMessage": last_message}
+    else:
+        response = {"hasMessages": False}
+    return JsonResponse(response)
 
 @require_POST
 def send_message(request):
+    group_id = int(request.POST["group"])
     player_id = int(request.POST["player"])
     message_txt = request.POST["message"]
 
-    player = models.Player.objects.get(id=player_id)
-    group = player.group
-
     message = models.Message.objects.create(
-        group=group, player=player, message=message_txt)
+        group_id=group_id, player_id=player_id, message=message_txt)
 
     response = JsonResponse({'message': message.id})
     return response

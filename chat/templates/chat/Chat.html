@@ -56,6 +56,8 @@
         var $inputMessage = $("input#message");
         var $buttonSend = $("button#send");
 
+        var lastMessage = null;
+
         $inputMessage.keyup(function(){
             var isEmpty = !$inputMessage.val();
             if(isEmpty){
@@ -68,9 +70,12 @@
         $buttonSend.click(function(){
             var url = "{% url 'ajax_chat:send_message' %}";
             var tokken = '{{ csrf_token }}';
+            var group = {{ player.group.id }};
             var player = {{ player.id }};
             var message = $inputMessage.val();
-            var msgData = {player: player, message: message, csrfmiddlewaretoken: tokken};
+            var msgData = {
+                group: group, player: player,
+                message: message, csrfmiddlewaretoken: tokken};
             $.post(url, msgData, function(data){
                 $inputMessage.val("");
                 $buttonSend.prop("disabled", true);
@@ -78,16 +83,21 @@
             return false;
         });
 
-        setInterval(
-            function(){
-                var url = "{% url 'ajax_chat:retrieve_messages' %}";
-                var player = {{ player.id }};
-                var rtrvData = {player: player};
-                $.get(url, rtrvData, function(data){
-                    $divChat.html(data.messagesHTML);
+        function retrieveMessages(){
+            var url = "{% url 'ajax_chat:retrieve_messages' %}";
+            var group = {{ player.group.id }};
+            var rtrvData = {group: group, last_message: lastMessage};
+            $.get(url, rtrvData, function(data){
+                console.log(data.hasMessages);
+                if(data.hasMessages){
+                    lastMessage = data.lastMessage;
+                    $divChat.append(data.messagesHTML);
                     $divChat[0].scrollTop = $divChat[0].scrollHeight;
-                });
-            }, 1000);
+                }
+            });
+        }
+        retrieveMessages();
+        setInterval(retrieveMessages, 2000);
 
     });
 </script>
