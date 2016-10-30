@@ -37,7 +37,7 @@ class Subsession(BaseSubsession):
         while last < len(seq):
             out.append(seq[int(last):int(last + avg)])
             last += avg
-        return sorted(out, reverse=True)
+        return sorted(out, key=lambda r: [p.id_in_group for p in r])
 
     def before_session_starts(self):
         # make groups
