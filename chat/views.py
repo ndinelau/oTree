@@ -60,9 +60,13 @@ def retrieve_messages(request):
 
     if last_message:
         last_message = dateutil.parser.parse(last_message)
-        messages = messages.filter(timestamp__gt=last_message)
+        messages = messages.filter(
+            timestamp__gt=last_message
+        ).order_by("timestamp")[:10].select_related()
+    else:
+        messages = messages.order_by("timestamp").select_related()
 
-    messages = list(messages.order_by("timestamp")[:10].select_related())
+    messages = list(messages)
 
     if messages:
         message_html = MESSAGES_TPL.render({"messages": messages})
