@@ -41,7 +41,7 @@ class Chat(Page):
     pass
 
 page_sequence = [
-    #~ SmallTalk,
+    SmallTalk,
     ChatWaitPage,
     Chat,
 ]
