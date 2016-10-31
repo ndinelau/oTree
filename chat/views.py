@@ -9,7 +9,7 @@ from django.views.decorators.http import require_POST, require_GET
 from django.template import loader
 from django.forms.models import model_to_dict
 from django.utils.six.moves import range
-from django.http import HttpResponse
+from django.http import HttpResponse, StreamingHttpResponse
 
 from otree.common import Currency as c, currency_range, safe_json
 
@@ -98,61 +98,92 @@ def export(request):
         def write(self, value):
             return value
 
-    rows = []
-    fieldnames = set()
-    for msg in models.Message.objects.all().order_by("timestamp"):
-        player = msg.player
-        participant = player.participant
-        group = msg.group
-        subsession = group.subsession
-        session = subsession.session
+    header = [
+        "Participant.id_in_session",
+        "Participant.code",
+        "Participant.label",
+        "Participant._is_bot",
+        "Participant._index_in_pages",
+        "Participant._max_page_index",
+        "Participant._current_app_name",
+        "Participant._round_number",
+        "Participant._current_page_name",
+        "Participant.ip_address",
+        "Participant.time_started",
+        "Participant.exclude_from_data_analysis",
+        "Participant.visited",
+        "Participant.mturk_worker_id",
+        "Participant.mturk_assignment_id",
 
-        row = {
-            "Participant.id_in_session": participant.id_in_session,
-            "Participant.code": participant.code,
-            "Participant.label": participant.label,
-            "Participant._is_bot": participant._is_bot,
-            "Participant._index_in_pages": participant._index_in_pages,
-            "Participant._max_page_index": participant._max_page_index,
-            "Participant._current_app_name": participant._current_app_name,
-            "Participant._round_number": participant._round_number,
-            "Participant._current_page_name": participant._current_page_name,
-            "Participant.ip_address": participant.ip_address,
-            "Participant.time_started": participant.time_started,
-            "Participant.exclude_from_data_analysis": participant.exclude_from_data_analysis,
-            "Participant.visited": participant.visited,
-            "Participant.mturk_worker_id": participant.mturk_worker_id,
-            "Participant.mturk_assignment_id": participant.mturk_assignment_id,
+        "Player.id_in_group",
+        "Group.id_in_subsession",
 
-            "Player.id_in_group": player.id_in_group,
-            "Group.id_in_subsession": group.id_in_subsession,
+        "Subsession.round_number",
 
-            "Subsession.round_number": subsession.round_number,
+        "Session.code",
+        "Session.label",
+        "Session.experimenter_name",
+        "Session.time_scheduled",
+        "Session.time_started",
+        "Session.comment",
+        "Session.is_demo",
 
-            "Session.code": session.code,
-            "Session.label": session.label,
-            "Session.experimenter_name": session.experimenter_name,
-            "Session.time_scheduled": session.time_scheduled,
-            "Session.time_started": session.time_started,
-            "Session.comment": session.comment,
-            "Session.is_demo": session.is_demo,
+        "Message.message",
+        "Message.timestamp",
+    ]
 
-            "Message.message": msg.message,
-            "Message.timestamp": msg.timestamp.isoformat(),
-        }
+    def iter_rows():
+        yield header
+        for msg in models.Message.objects.all().order_by("timestamp"):
+            player = msg.player
+            participant = player.participant
+            group = msg.group
+            subsession = group.subsession
+            session = subsession.session
 
-        fieldnames.update(row.keys())
-        rows.append(row)
+            row = [
+                 participant.id_in_session,
+                 participant.code,
+                 participant.label,
+                 participant._is_bot,
+                 participant._index_in_pages,
+                 participant._max_page_index,
+                 participant._current_app_name,
+                 participant._round_number,
+                 participant._current_page_name,
+                 participant.ip_address,
+                 participant.time_started,
+                 participant.exclude_from_data_analysis,
+                 participant.visited,
+                 participant.mturk_worker_id,
+                 participant.mturk_assignment_id,
 
+                 player.id_in_group,
+                 group.id_in_subsession,
 
+                 subsession.round_number,
+
+                 session.code,
+                 session.label,
+                 session.experimenter_name,
+                 session.time_scheduled,
+                 session.time_started,
+                 session.comment,
+                 session.is_demo,
+
+                 msg.message,
+                 msg.timestamp.isoformat(),
+            ]
+            yield [e for e in row]
+
+    rows = iter_rows()
     now = datetime.date.today().isoformat()
-    response = HttpResponse(content_type='text/csv')
+
+    pseudo_buffer = Echo()
+    writer = csv.writer(pseudo_buffer)
+    response = StreamingHttpResponse((writer.writerow(row) for row in rows),
+                                     content_type="text/csv")
     response['Content-Disposition'] = 'attachment; filename="chat_messages (accesed {}).csv"'.format(now)
-
-    writer = csv.DictWriter(response, list(fieldnames))
-    writer.writeheader()
-    writer.writerows(rows)
-
     return response
 
 
