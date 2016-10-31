@@ -174,7 +174,7 @@ def export(request):
                  msg.message,
                  msg.timestamp.isoformat(),
             ]
-            yield [e for e in row]
+            yield row
 
     rows = iter_rows()
     now = datetime.date.today().isoformat()
