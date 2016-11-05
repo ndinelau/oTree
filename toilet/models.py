@@ -30,6 +30,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+
     def chunk_it(self, seq, num):
         avg = len(seq) / float(num)
         out = []
@@ -80,6 +81,8 @@ class Group(BaseGroup):
                     player_prev_round.resources +
                     self.get_resources_inc(player_prev_round))
                 player.health = player_prev_round.health + 1
+                if player.health > Constants.max_health:
+                    player.health = Constants.max_health
 
     def current_toilet_usage_health_lose(self):
         if self.toilet <= 4:
@@ -110,7 +113,7 @@ class Group(BaseGroup):
 
             if player.health < 0:
                 player.health = 0
-            elif player.health > Constants.max_health:
+            if player.health > Constants.max_health:
                 player.health = Constants.max_health
 
             if player.big_clean:

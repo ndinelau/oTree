@@ -111,7 +111,7 @@ class Group(BaseGroup):
 
             if player.health < 0:
                 player.health = 0
-            elif player.health > Constants.max_health:
+            if player.health > Constants.max_health:
                 player.health = Constants.max_health
 
             if player.big_clean:
